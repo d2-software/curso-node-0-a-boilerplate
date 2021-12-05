@@ -12,6 +12,11 @@ app.get('/status', (req, res) => {
 
 app.use(apiRouter);
 
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+});
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
