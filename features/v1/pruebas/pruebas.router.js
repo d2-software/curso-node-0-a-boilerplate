@@ -1,8 +1,7 @@
 const router = require('express').Router();
 
 const { postPrueba } = require('./pruebas.controller');
-const { funcionMiddleware } = require('../../../middlewares');
 
-router.post('/', funcionMiddleware, postPrueba);
+router.post('/', postPrueba);
 
 module.exports = router;

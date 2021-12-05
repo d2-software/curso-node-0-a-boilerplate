@@ -6,8 +6,8 @@ const apiRouter = require('./features/v1/api.router');
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World! Hola2.');
+app.get('/status', (req, res) => {
+    res.status(200).send();
 });
 
 app.use(apiRouter);
