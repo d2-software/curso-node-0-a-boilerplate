@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+
+require('dotenv').config();
+const port = process.env.NODE_PORT || 3000;
 
 const apiRouter = require('./features/v1/api.router');
 
