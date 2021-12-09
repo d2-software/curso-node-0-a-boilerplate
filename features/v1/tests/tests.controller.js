@@ -1,3 +1,6 @@
+const ValidationError = require('../../../errors/validation');
+const { CREATED } = require('http-status');
+
 const asyncFunctionTest = async () => {
     throw new Error('la promesa no está resuelta');
     return Promise.resolve('a');
@@ -16,11 +19,11 @@ const postTest = async (req, res, next) => {
         console.log(a);
     } catch (e) {
         console.log('Ha ocurrido un error asíncrono');
-        next(e);
+        next(new ValidationError(['test', 'hola']));
         return;
     }
 
-    res.json(req.body);
+    res.status(CREATED).json(req.body);
 };
 
 module.exports = {

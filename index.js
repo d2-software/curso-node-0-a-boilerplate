@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const boom = require('@hapi/boom');
+const ValidationError = require('./errors/validation');
 
 require('dotenv').config();
 const port = process.env.NODE_PORT || 3000;
@@ -15,8 +17,23 @@ app.get('/status', (req, res) => {
 app.use(apiRouter);
 
 app.use((err, req, res, next) => {
-    console.log(err);
-    res.status(500).json({ error: err.message });
+    let errorToShow = err;
+
+    if (!(err instanceof ValidationError) && !err.isBoom) {
+        errorToShow = boom.internal(err.message);
+    }
+
+    let statusCode, payload;
+
+    if (err.isBoom) {
+        statusCode = errorToShow.output.statusCode;
+        payload = errorToShow.output.payload;
+    } else {
+        statusCode = errorToShow.status;
+        payload = errorToShow.toJSON();
+    }
+
+    res.status(statusCode).json(payload);
 });
 
 app.listen(port, () => {
