@@ -7,6 +7,8 @@ class ValidationError extends BaseError {
         super(internalMessage, UNPROCESSABLE_ENTITY);
 
         this.name = this.constructor.name;
+        
+        Error.captureStackTrace(this, this.constructor);
     }
 }
 
