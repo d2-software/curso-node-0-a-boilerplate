@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const boom = require('@hapi/boom');
@@ -11,6 +12,7 @@ const port = process.env.NODE_PORT || 3000;
 const apiRouter = require('./features/v1/api.router');
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/status', (req, res) => {
     res.status(200).send();
