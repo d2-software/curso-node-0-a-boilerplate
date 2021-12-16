@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const morgan = require('morgan');
 
 const app = express();
 const boom = require('@hapi/boom');
@@ -15,6 +16,7 @@ const apiRouter = require('./features/v1/api.router');
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
+app.use(morgan('combined'));
 
 app.get('/status', (req, res) => {
     res.status(200).send();
