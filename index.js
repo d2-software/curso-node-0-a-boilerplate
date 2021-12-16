@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const boom = require('@hapi/boom');
 const ValidationError = require('./errors/validation');
+const passport = require('./config/passport');
 
 require('dotenv').config();
 
@@ -17,6 +18,8 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan('combined'));
+
+app.use(passport.initialize());
 
 app.get('/status', (req, res) => {
     res.status(200).send();

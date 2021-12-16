@@ -2,10 +2,10 @@ const { CREATED } = require('http-status');
 const logger = require('../../../config/winston');
 const ValidationError = require('../../../errors/validation');
 
-const asyncFunctionTest = async () => {
-    throw new Error('la promesa no está resuelta');
-    return Promise.resolve('a');
-};
+const asyncFunctionTest = async () => 
+    // throw new Error('la promesa no está resuelta');
+     Promise.resolve('a')
+;
 
 const getTest = (req, res) => {
     res.json({ msg: 'Hello World! TEST.' });
