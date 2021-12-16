@@ -1,5 +1,6 @@
-const ValidationError = require('../../../errors/validation');
 const { CREATED } = require('http-status');
+const logger = require('../../../config/winston');
+const ValidationError = require('../../../errors/validation');
 
 const asyncFunctionTest = async () => {
     throw new Error('la promesa no está resuelta');
@@ -12,7 +13,7 @@ const getTest = (req, res) => {
 
 const postTest = async (req, res, next) => {
     const { body } = req;
-    console.log(body);
+    logger.debug('%o', body);
 
     try {
         const a = await asyncFunctionTest();
