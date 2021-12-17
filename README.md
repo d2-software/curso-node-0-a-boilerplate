@@ -30,3 +30,10 @@ Visto en la sesión:
 - Añadir configuración de prettier y eslint.
 
 Vídeo de la sesión: https://youtu.be/ShjM0pUGZ7Y
+
+### Sesión 4:
+**ATENCIÓN: Esta versión es inestable. En la sesión 5 actualizaremos toda la parte de passport que, en estos momentos, no funciona**
+- Configuración de librerías (CORS, Helmet, Winston y Morgan).
+- Configuración inicial de passport (incompleta!!)
+
+Vídeo de la sesión: https://youtu.be/4F2cnzobEyA
